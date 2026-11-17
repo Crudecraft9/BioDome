@@ -1,0 +1,1 @@
+Imágenes de autómatas (afd-<clase>.png) y sus fuentes (.jff de JFLAP, .drawio).

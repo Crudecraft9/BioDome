@@ -1,0 +1,36 @@
+// Domo tropical con monitoreo cada 10 minutos
+dome Tropical01 {
+
+    sensor temperature temp @A1;
+    sensor humidity humedad @A2;
+    sensor soil humedadSuelo @A3;
+    sensor light luminosidad @A4;
+    sensor co2 dioxido @A5;
+
+    actuator irrigation riego @B1;
+    actuator ventilation ventilador @B2;
+    actuator lighting luz @B3;
+
+    every 10min {
+
+        if (temp > 30C and humedad >= 80.5%) {
+            activate ventilador -> 5min;
+            alert "Temperatura elevada";
+        } else {
+            deactivate ventilador;
+        }
+
+        if (humedadSuelo < 40%) {
+            activate riego -> 2min;
+            log "Riego automatico iniciado";
+        }
+
+        if (not (luminosidad >= 500)) {
+            activate luz;
+        }
+
+        if (dioxido != 400) {
+            log "CO2 fuera del valor nominal";
+        }
+    }
+}

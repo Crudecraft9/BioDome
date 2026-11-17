@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BioDome IDE</title>
+  </head>
+  <body>
+    <header>
+      <h1>BioDome <span>(BDL)</span></h1>
+      <button id="btn-analizar" title="Ctrl+Enter">Analizar ▶</button>
+      <span id="estado"></span>
+    </header>
+
+    <main>
+      <section class="editor">
+        <div class="titulo">Código fuente <small>.bdl</small></div>
+        <div class="editor-cuerpo">
+          <pre id="lineas" aria-hidden="true">1</pre>
+          <textarea id="codigo" spellcheck="false"></textarea>
+        </div>
+      </section>
+
+      <section class="resultados">
+        <nav class="pestanas">
+          <button data-tab="tokens" class="activa">Tokens <b id="n-tokens">0</b></button>
+          <button data-tab="simbolos">Símbolos <b id="n-simbolos">0</b></button>
+          <button data-tab="errores">Errores <b id="n-errores">0</b></button>
+          <button data-tab="reservadas">Palabras reservadas</button>
+        </nav>
+        <div class="panel activa" id="tab-tokens">
+          <table><thead><tr><th>#</th><th>Lexema</th><th>Token</th><th>Categoría</th><th>Lín</th><th>Col</th></tr></thead><tbody></tbody></table>
+        </div>
+        <div class="panel" id="tab-simbolos">
+          <table><thead><tr><th>Identificador</th><th>Primera línea</th><th>Apariciones</th></tr></thead><tbody></tbody></table>
+        </div>
+        <div class="panel" id="tab-errores">
+          <table><thead><tr><th>Código</th><th>Mensaje</th><th>Lín</th><th>Col</th></tr></thead><tbody></tbody></table>
+        </div>
+        <div class="panel" id="tab-reservadas">
+          <table><thead><tr><th>Palabra</th><th>Token</th><th>Descripción</th></tr></thead><tbody></tbody></table>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
